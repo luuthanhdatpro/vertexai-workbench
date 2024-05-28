@@ -47,8 +47,9 @@ jobs:
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: |
-        if [ -f users/${{ matrix.user_config }}]; then
+        if [ -f users/${{ matrix.user_config }} ]; then
           terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
         else
           terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
+        fi
       working-directory: ./notebooks
