@@ -52,6 +52,6 @@ jobs:
           terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
         else
           terraform state list
-          terraform destroy -target google_workbench_instance.instance -auto-approve -lock=false
+          terraform destroy -target google_workbench_instance.instance -auto-approve
         fi
       working-directory: ./notebooks
