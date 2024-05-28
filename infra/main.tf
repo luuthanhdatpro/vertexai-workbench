@@ -3,6 +3,14 @@ provider "google" {
   region      = var.region
 }
 
+
+terraform {
+  backend "gcs" {
+    bucket  = "tfstate-bucket-1102"
+    prefix  = "network/state"
+  }
+}
+
 # resource "google_storage_bucket" "tfstate" {
 #   name          = "tfstate-bucket-1102"
 #   force_destroy = false

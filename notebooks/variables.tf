@@ -18,6 +18,10 @@ variable "region" {
   default     = "asia-east1"
 }
 
+variable "tfstate_prefix" {
+  description = "Prefix of state file in GCS bucket"
+  type        = string
+}
 # Notebooks Variables
 
 variable "service_accounts" {
@@ -92,3 +96,4 @@ variable "subnet_ip_cidr_range" {
   type        = string
   default     = "10.0.0.0/21"
 }
+
