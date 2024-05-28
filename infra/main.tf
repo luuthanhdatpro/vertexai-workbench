@@ -3,16 +3,16 @@ provider "google" {
   region      = var.region
 }
 
-resource "google_storage_bucket" "tfstate" {
-  name          = "tfstate-bucket-1102"
-  force_destroy = false
-  location      = "ASIA"
-  storage_class = "STANDARD"
-  uniform_bucket_level_access = true
-  versioning {
-    enabled = true
-  }
-}
+# resource "google_storage_bucket" "tfstate" {
+#   name          = "tfstate-bucket-1102"
+#   force_destroy = false
+#   location      = "ASIA"
+#   storage_class = "STANDARD"
+#   uniform_bucket_level_access = true
+#   versioning {
+#     enabled = true
+#   }
+# }
 
 resource "google_compute_network" "vpc_network" {
   project                         = var.project

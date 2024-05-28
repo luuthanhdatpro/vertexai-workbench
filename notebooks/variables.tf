@@ -9,13 +9,13 @@ variable "project" {
 variable "zone" {
   description = "The GCP Zone for Vertex Notebook User-Managed Instances"
   type        = string
-  default     = "europe-west1-b"
+  default     = "asia-east1-a"
 }
 
 variable "region" {
   description = "The GCP region for the GCS bucket and Artifact Registry"
   type        = string
-  default     = "europe-west1"
+  default     = "asia-east1"
 }
 
 # Notebooks Variables
@@ -52,7 +52,7 @@ variable "boot_disk_type" {
 variable "boot_disk_size_gb" {
   description = "The size of the boot disk in GB attached to notebook instances, up to a maximum of 64 TB. The minimum recommended value is 100GB."
   type        = number
-  default     = 100
+  default     = 160
 }
 
 variable "data_disk_type" {
@@ -64,13 +64,13 @@ variable "data_disk_type" {
 variable "data_disk_size_gb" {
   description = "The size of the data disk in GB attached to notebook instances, up to a maximum of 64 TB. You can choose the size of the data disk based on how big your notebooks and data are."
   type        = number
-  default     = 100
+  default     = 160
 }
 
 variable "accelerator_type" {
   description = "Type of accelerator. Possible values are ACCELERATOR_TYPE_UNSPECIFIED, NVIDIA_TESLA_K80, NVIDIA_TESLA_P100, NVIDIA_TESLA_V100, NVIDIA_TESLA_P4, NVIDIA_TESLA_T4, NVIDIA_TESLA_T4_VWS, NVIDIA_TESLA_P100_VWS, NVIDIA_TESLA_P4_VWS, NVIDIA_TESLA_A100, TPU_V2, and TPU_V3"
   type        = string
-  default     = "ACCELERATOR_TYPE_UNSPECIFIED"
+  default     = "NVIDIA_TESLA_P100"
 }
 
 variable "accelerator_core_count" {
@@ -84,6 +84,7 @@ variable "accelerator_core_count" {
 variable "vpc_network_name" {
   description = "The name of your VPC Network"
   type        = string
+  default     = "thanhliu"
 }
 
 variable "subnet_ip_cidr_range" {
