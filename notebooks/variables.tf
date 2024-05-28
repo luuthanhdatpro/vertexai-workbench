@@ -56,7 +56,7 @@ variable "boot_disk_type" {
 variable "boot_disk_size_gb" {
   description = "The size of the boot disk in GB attached to notebook instances, up to a maximum of 64 TB. The minimum recommended value is 100GB."
   type        = number
-  default     = 100
+  default     = 150
 }
 
 variable "data_disk_type" {
@@ -68,7 +68,7 @@ variable "data_disk_type" {
 variable "data_disk_size_gb" {
   description = "The size of the data disk in GB attached to notebook instances, up to a maximum of 64 TB. You can choose the size of the data disk based on how big your notebooks and data are."
   type        = number
-  default     = 100
+  default     = 150
 }
 
 variable "accelerator_type" {
