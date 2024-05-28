@@ -19,7 +19,7 @@ data "google_compute_subnetwork" "workbench_subnetwork" {
 }
 
 resource "google_workbench_instance" "instance" {
-    name     = "${var.instance_name}-${replace(var.instance_owner, "@thanhliu.site")}"
+    name     = "${var.instance_name}-${replace(var.instance_owner, "@thanhliu.site", "")}"
     location = var.zone
 
     gce_setup {
