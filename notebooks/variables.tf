@@ -44,7 +44,7 @@ variable "instance_owner" {
 variable "machine_type" {
   description = "The Notebook Instance's machine type"
   type        = string
-  default     = "e1-standard-2"
+  default     = "e2-standard-2"
 }
 
 variable "boot_disk_type" {
