@@ -15,7 +15,7 @@ jobs:
     environment: production
     strategy:
       matrix:
-        user_config: [user1.tfvars, user2.tfvars]
+        user_config: [user1, user2]
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
@@ -47,9 +47,10 @@ jobs:
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: |
-        if [ -f users/${{ matrix.user_config }} ]; then
-          terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
+        if [ -f users/${{ matrix.user_config }}.tfvars ]; then
+          terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
         else
-          terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
+          terraform state list
+          terraform destroy -target google_workbench_instance.${{ matrix.user_config }}-notebook -auto-approve -lock=false
         fi
       working-directory: ./notebooks

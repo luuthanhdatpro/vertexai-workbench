@@ -33,7 +33,7 @@ variable "service_accounts" {
 variable "instance_name" {
   description = "The name of this workbench instance."
   type        = string
-  default     = "workbench-instance"
+  default     = "notebook"
 }
 
 variable "instance_owner" {
