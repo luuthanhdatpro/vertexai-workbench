@@ -48,6 +48,7 @@ jobs:
       # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: |
         if [ -f users/${{ matrix.user_config }}.tfvars ]; then
+          terraform state list
           terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
         else
           terraform state list
