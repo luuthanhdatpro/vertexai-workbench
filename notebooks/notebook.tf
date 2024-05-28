@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
     bucket  = "tfstate-bucket-1102"
-    prefix  = var.tfstate_prefix
+    prefix  = "notebook/"
   }
 }
 provider "google" {
