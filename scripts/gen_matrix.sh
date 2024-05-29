@@ -11,7 +11,7 @@ for file in "$DIRECTORY"/*; do
   else
     echo -n ','
   fi
-  echo -n \"" $(basename $file)\""
+  echo -n \""$(basename $file)\""
 done
 
-echo ']}'
+echo -n ']}'
