@@ -12,7 +12,7 @@ jobs:
   generate-matrix:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.gen-matrix.outputs.matrix }}
     defaults:
       run:
         shell: bash
