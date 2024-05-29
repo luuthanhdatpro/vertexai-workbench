@@ -33,7 +33,7 @@ jobs:
     environment: production
     strategy:
       matrix:
-        user_config: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+        user_config: ${{ needs.generate-matrix.outputs.matrix }}
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
