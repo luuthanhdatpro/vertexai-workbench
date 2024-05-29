@@ -23,7 +23,6 @@ jobs:
           chmod +x gen-matrix.sh
           ./gen_matrix.sh > matrix.json
           echo $(cat matrix.json) >> $GITHUB_OUTPUT
-        working-directory: ./notebooks
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
