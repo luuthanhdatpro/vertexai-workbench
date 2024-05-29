@@ -1,3 +1,4 @@
 # vertexai-workbench
-
-Please refer to [Vertex AI Workbench](Vertex AI Workbench.pptx) for more information.
+![Infra](infrastructure.png)
+Infrastructure Diagram
+Please refer to Vertex AI Workbench.pptx file for more information.
