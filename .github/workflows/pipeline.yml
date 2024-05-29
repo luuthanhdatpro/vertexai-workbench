@@ -12,7 +12,7 @@ jobs:
   # generate-matrix:
   #   runs-on: ubuntu-latest
   #   outputs:
-  #     matrix: ${{ steps.gen-matrix.outputs.matrix }}
+      # matrix: 
   #   defaults:
   #     run:
   #       shell: bash
@@ -37,7 +37,6 @@ jobs:
     strategy:
       matrix:
         user_config: [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
-        #${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
