@@ -19,6 +19,7 @@ data "google_compute_subnetwork" "workbench_subnetwork" {
 }
 
 resource "google_workbench_instance" "instance" {
+    count    = var.isDeleted ? 0 : 1
     name     = "${replace(var.instance_owner, "@thanhliu.site", "")}-${var.instance_name}"
     location = var.zone
 

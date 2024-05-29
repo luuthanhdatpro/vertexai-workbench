@@ -23,6 +23,12 @@ variable "tfstate_prefix" {
   type        = string
 }
 # Notebooks Variables
+variable "isDeleted" {
+  description = "State of instance"
+  type        = bool
+  default     = false
+}
+
 
 variable "service_accounts" {
   description = "The service account that serves as an identity for the VM instance."
