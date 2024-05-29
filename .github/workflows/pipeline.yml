@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,9 +23,10 @@ jobs:
       - id: gen-matrix
         name: Generate matrix
         run: |
-          chmod +x gen-matrix.sh
+          chmod +x gen_matrix.sh
           ./gen_matrix.sh > matrix.json
           echo $(cat matrix.json) >> $GITHUB_OUTPUT
+        working-directory: ./notebooks
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
