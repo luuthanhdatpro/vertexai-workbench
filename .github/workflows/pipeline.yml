@@ -57,6 +57,6 @@ jobs:
         else
           terraform state list
           terraform state rm google_workbench_instance.instance
-          gcloud notebooks instances delete ${{ matrix.user_config }}-instance --location=${{ env.LOCATION }}
+          gcloud notebooks instances delete ${{ matrix.user_config }}-notebook --location=${{ env.LOCATION }}
         fi
       working-directory: ./notebooks
