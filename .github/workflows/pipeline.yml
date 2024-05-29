@@ -27,7 +27,8 @@ jobs:
           MATRIX=$(./gen_matrix.sh)
           MATRIX_ESCAPED=$(echo "$MATRIX" | jq -c .)   
           echo "$MATRIX_ESCAPED"    
-          echo "$MATRIX_ESCAPED" >> GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
+          echo "$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
           #echo $(cat matrix.json) >> $GITHUB_OUTPUT
         working-directory: ./scripts
   terraform:
