@@ -9,33 +9,35 @@ permissions:
   contents: read
 
 jobs:
-  generate-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.gen-matrix.outputs.matrix }}
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # generate-matrix:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     matrix: ${{ steps.gen-matrix.outputs.matrix }}
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - id: gen-matrix
-        name: Generate matrix
-        run: |
-          chmod +x gen_matrix.sh
-          MATRIX=$(./gen_matrix.sh)
-          MATRIX_ESCAPED=$(echo "$MATRIX" | jq -c .)   
-          echo "$MATRIX_ESCAPED"    
-          echo $GITHUB_OUTPUT
-          echo "$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
-          #echo $(cat matrix.json) >> $GITHUB_OUTPUT
-        working-directory: ./scripts
+  #     - id: gen-matrix
+  #       name: Generate matrix
+  #       run: |
+  #         chmod +x gen_matrix.sh
+  #         MATRIX=$(./gen_matrix.sh)
+  #         MATRIX_ESCAPED=$(echo "$MATRIX" | jq -c .)   
+  #         echo "$MATRIX_ESCAPED"    
+  #         echo $GITHUB_OUTPUT
+  #         echo "$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
+  #         #echo $(cat matrix.json) >> $GITHUB_OUTPUT
+  #       working-directory: ./scripts
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      matrix:
+        user_config: [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
+        #${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
