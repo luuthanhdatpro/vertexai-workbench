@@ -57,8 +57,8 @@ jobs:
           state=$(terraform state list)
           instance="google_workbench_instance.instance"
           if echo "$state" | grep -q "$instance"; then
-            terraform state rm google_workbench_instance.instance
             gcloud notebooks instances delete ${{ matrix.user_config }}-notebook --location=${{ vars.LOCATION }}
+            terraform state rm google_workbench_instance.instance
           fi
           #gcloud notebooks instances delete ${{ matrix.user_config }}-notebook --location=${{ vars.LOCATION }}
         fi
