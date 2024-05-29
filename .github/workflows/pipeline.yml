@@ -40,7 +40,7 @@ jobs:
         version: '>= 363.0.0'
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -reconfigure
       working-directory: ./notebooks
     # Generates an execution plan for Terraform
     - name: Terraform Plan
@@ -55,6 +55,7 @@ jobs:
           terraform state list
           terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
         else
+          terraform state list
           state=$(terraform state list)
           instance="google_workbench_instance.instance"
           if echo "$state" | grep -q "$instance"; then
