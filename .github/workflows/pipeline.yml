@@ -56,7 +56,7 @@ jobs:
           terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
         else
           terraform state list
-          terraform state rm google_workbench_instance.${{ matrix.user_config }}-instance
+          terraform state rm google_workbench_instance.instance
           gcloud notebooks instances delete ${{ matrix.user_config }}-instance --location=${{ env.LOCATION }}
         fi
       working-directory: ./notebooks
