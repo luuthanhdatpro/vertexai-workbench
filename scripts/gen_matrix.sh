@@ -1,17 +1,17 @@
 #!/bin/bash
 
-DIRECTORY="/notebooks/users"  # Replace with your directory
+DIRECTORY="../notebooks/users"  # Replace with your directory
 
-echo '{"include": ['
+echo -n '['
 
 first=true
 for file in "$DIRECTORY"/*; do
   if [ "$first" = true ]; then
     first=false
   else
-    echo ','
+    echo -n ','
   fi
-  echo "{\"file\": \"$(basename "$file")\"}"
+  echo -n " $(basename $file)"
 done
 
-echo ']}'
+echo ']'
