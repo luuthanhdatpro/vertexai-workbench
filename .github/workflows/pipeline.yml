@@ -65,5 +65,5 @@ jobs:
       working-directory: ./notebooks
     - name: Terraform Apply
       run: |
-        terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
+        terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
       working-directory: ./notebooks
