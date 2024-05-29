@@ -42,24 +42,11 @@ jobs:
     - name: Terraform Init
       run: terraform init -reconfigure
       working-directory: ./notebooks
-    # Generates an execution plan for Terraform
-    - name: Terraform choose workspace
+    # Create and choosing workspace for each user
+    - name: Terraform Choose Workspace
       run: terraform workspace new ${{ matrix.user_config }} || terraform workspace select ${{ matrix.user_config }}
       working-directory: ./notebooks
     - name: Terraform Apply
-      # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: |
-        if [ -f users/${{ matrix.user_config }}.tfvars ]; then
-          terraform state list
-          terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
-        else
-          terraform state list
-          state=$(terraform state list)
-          instance="google_workbench_instance.instance"
-          if echo "$state" | grep -q "$instance"; then
-            gcloud notebooks instances delete ${{ matrix.user_config }}-notebook --location=${{ vars.LOCATION }}
-            terraform state rm google_workbench_instance.instance
-          fi
-          #gcloud notebooks instances delete ${{ matrix.user_config }}-notebook --location=${{ vars.LOCATION }}
-        fi
+        terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
       working-directory: ./notebooks
