@@ -53,6 +53,6 @@ jobs:
         else
           rm -rf notebook.tf
           terraform state list
-          terraform destroy -target google_workbench_instance.instance -auto-approve
+          terraform apply -auto-approve -lock=false
         fi
       working-directory: ./notebooks
