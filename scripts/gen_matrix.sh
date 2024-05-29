@@ -2,7 +2,7 @@
 
 DIRECTORY="../notebooks/users"  # Replace with your directory
 
-echo -n '['
+echo -n '{"user_config": ['
 
 first=true
 for file in "$DIRECTORY"/*; do
@@ -11,7 +11,7 @@ for file in "$DIRECTORY"/*; do
   else
     echo -n ','
   fi
-  echo -n " $(basename $file)"
+  echo -n \"" $(basename $file)\""
 done
 
-echo ']'
+echo ']}'
