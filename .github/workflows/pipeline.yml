@@ -28,8 +28,9 @@ jobs:
           MATRIX_ESCAPED=$(echo "$MATRIX" | jq -c . | sed 's/ //g')   
           echo "$MATRIX_ESCAPED"    
           echo $GITHUB_OUTPUT
-          echo "$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
+          #echo "$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
           #echo $(cat matrix.json) >> $GITHUB_OUTPUT
+          echo "::set-output name=matrix::$MATRIX_ESCAPED"
         working-directory: ./scripts
   terraform:
     name: 'Terraform'
