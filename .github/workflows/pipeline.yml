@@ -35,8 +35,7 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        user_config: ${{ fromJson(needs.generate-matrix.outputs.matrix) }} #[user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }} #[user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
