@@ -12,7 +12,7 @@ jobs:
   generate-matrix:
     runs-on: ubuntu-latest
     outputs:
-      matrix: 
+      matrix: ${{ steps.gen-matrix.outputs.matrix }}
     defaults:
       run:
         shell: bash
@@ -29,15 +29,14 @@ jobs:
           echo "$MATRIX_ESCAPED"    
           echo $GITHUB_OUTPUT
           echo "matrix=$MATRIX_ESCAPED" >> $GITHUB_OUTPUT
-          #echo $(cat matrix.json) >> $GITHUB_OUTPUT
-          #echo "::set-output name=matrix::$MATRIX_ESCAPED"
         working-directory: ./scripts
   terraform:
+    needs: generate-matrix
     name: 'Terraform'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        user_config: [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
+        user_config: ${{ fromJson(needs.generate-matrix.outputs.matrix) }} #[user1, user2, user3, user4, user5, user6, user7, user8, user9, user10] 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
@@ -66,5 +65,5 @@ jobs:
       working-directory: ./notebooks
     - name: Terraform Apply
       run: |
-        terraform apply -var-file=users/${{ matrix.user_config }}.tfvars -auto-approve -lock=false
+        terraform apply -var-file=users/${{ matrix.user_config }} -auto-approve -lock=false
       working-directory: ./notebooks
